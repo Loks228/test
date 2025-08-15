@@ -62,5 +62,6 @@ status_funtion
 echo -e "==========================Push to GitHub=========================="
 read -p "Push to GitHub; Wtite y; " GITHUB
 if [ "$GITHUB" == "y" ]; then
-    git push $(git branch --show-current)
+    Current_BRANCH=$(git branch --show-current)
+    git push origin $Current_BRANCH
 fi
