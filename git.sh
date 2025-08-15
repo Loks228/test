@@ -60,7 +60,7 @@ branch_funtion
 status_funtion
 
 echo -e "==========================Push to GitHub=========================="
-read -p "Push to GitHub; Wtite y" GITHUB
+read -p "Push to GitHub; Wtite y; " GITHUB
 if [ "$GITHUB" == "y" ]; then
-    git push origin HEAD
+    git push
 fi
