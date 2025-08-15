@@ -39,7 +39,6 @@ branch_funtion() {
     read -p "Enter your branch name: " BRANCH
     if [ -z "$BRANCH" ]; then
             echo "Branch name cannot be empty. Exiting."
-            exit 1
         else
             echo "Switching to branch: $BRANCH"
             git checkout $BRANCH
