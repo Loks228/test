@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-trap 'echo "Error in  line $LINENO: $BASH_COMMAND (code: $?)"; read -p "Following? (y/n): " CONT; [ "$CONT" != "y" ] && exit 1' ERR
+trap 'echo "Error in line $LINENO: $BASH_COMMAND (code: $?)"; read -p "Following? (y/n): " CONT; [ "$CONT" != "y" ] && exit 1' ERR
 
 echo -e "==========================Git Branch=========================="
 read -p "Do you need see branches: Write (y/all); " BRANCHES
