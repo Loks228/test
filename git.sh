@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+trap 'echo "Error in  line $LINENO: $BASH_COMMAND (code: $?)"; read -p "Following? (y/n): " CONT; [ "$CONT" != "y" ] && exit 1' ERR
 
 echo -e "==========================Git Branch=========================="
 read -p "Do you need see branches: Write (y/all); " BRANCHES
@@ -20,6 +21,7 @@ status_funtion() {
 }
 
 add_funtion() {
+    echo -e "==========================Add=========================="
     read -p "Do you want to add all changes? (y/n): " ADD_ALL
     if [ "$ADD_ALL" == "y" ]; then
         git add .
@@ -43,19 +45,18 @@ branch_funtion() {
             echo "Switching to branch: $BRANCH"
             git checkout $BRANCH
             echo -e "==========================Fetch=========================="
-            git fetch origin
+            git fetch origin $BRANCH
+            echo -e "==========================Pull=========================="
+            read -p "Do you need to pull changes from remote? (y/n): " PULL
+            if [ "$PULL" == "y" ]; then
+                git pull origin $BRANCH
+            fi
+            
     fi
-
 }
 
 branch_funtion
-
-read -p "Do you need to pull changes from remote? (y/n): " PULL
-if [ "$PULL" == "y" ]; then
-    git pull origin $BRANCH
-fi
-
-
+pull_funtion
 status_funtion
 
 read -p "==========================Push to GitHub=========================="
