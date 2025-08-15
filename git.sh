@@ -40,7 +40,8 @@ branch_funtion() {
     echo -e "==========================Branch=========================="
     read -p "Enter your branch name: " BRANCH
     if [ -z "$BRANCH" ]; then
-            echo "Branch name cannot be empty. Exiting."
+            echo "Skipping branch switch."
+            echo "Current branch is: $(git branch --show-current)"
         else
             echo "Switching to branch: $BRANCH"
             git checkout $BRANCH
@@ -56,7 +57,6 @@ branch_funtion() {
 }
 
 branch_funtion
-pull_funtion
 status_funtion
 
 read -p "==========================Push to GitHub=========================="
